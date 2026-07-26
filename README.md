@@ -2,7 +2,7 @@
 
 ## How the World's Biggest Apps Really Work — End to End
 
-> **22 apps. 22 architectures. Zero buzzwords.**
+> **22 apps. 22 architectures. 5 component guides. Zero buzzwords.**
 > Every component, every scale number, every trade-off — explained from scratch, with ASCII diagrams and "how you can build it too" sections.
 
 ---
@@ -21,6 +21,20 @@ These building blocks apply to every system. Understanding them makes the app-sp
 | 4 | [Message Queues](concepts/message-queues.md) | Async processing — Kafka, RabbitMQ, pub/sub, exactly-once, decoupling services |
 | 5 | [CDN](concepts/cdn.md) | Global content delivery — edge caching, video streaming, adaptive bitrate, origin shields |
 | 6 | [Microservices](concepts/microservices.md) | When/how to split a monolith — API gateways, service discovery, circuit breakers, sagas |
+
+---
+
+### 🔧 Components & Technologies Reference
+
+Every database, protocol, messaging system, and infrastructure tool mentioned across all 22 deep dives — explained individually with alternatives, comparisons, and when to use each.
+
+| Guide | What You Learn |
+|-------|---------------|
+| [Databases](components/databases.md) | Redis, MySQL, PostgreSQL, Cassandra, DynamoDB, Bigtable, Elasticsearch, MongoDB, S3, Spanner, ClickHouse, Snowflake, Neo4j, SQLite |
+| [Messaging & Streaming](components/messaging.md) | Kafka, RabbitMQ, SQS, Redis Streams, NATS, Pulsar, Celery — queues vs logs, delivery guarantees, consumer groups |
+| [Networking & Protocols](components/networking.md) | WebSocket, SSE, gRPC, WebRTC, MQTT, HTTP/2, QUIC, XMPP — handshakes, lifecycles, when to use |
+| [API Architectures](components/api-architectures.md) | REST, GraphQL, gRPC, Protobuf, Long Polling — over/under-fetching, decision tree |
+| [Infrastructure & DevOps](components/infrastructure-and-devops.md) | Nginx, HAProxy, Envoy, Zuul, CloudFront, Akamai, Cloudflare, Kubernetes, Spark, Flink, Prometheus, Grafana, Erlang, Go |
 
 ---
 
