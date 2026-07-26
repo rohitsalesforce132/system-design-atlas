@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebulaShop — Full-Stack Demo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a; color: #e0e0e0; padding: 20px;
+        }
+        h1 { color: #fff; margin-bottom: 8px; font-size: 1.8rem; }
+        .subtitle { color: #888; margin-bottom: 24px; font-size: 0.9rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; }
+        .card {
+            background: #1a1a1a; border: 1px solid #333; border-radius: 8px;
+            padding: 20px; margin-bottom: 16px;
+        }
+        .card h2 { color: #bb86fc; margin-bottom: 12px; font-size: 1.1rem; }
+        .badge {
+            display: inline-block; background: #2d2d2d; color: #03dac6;
+            padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;
+            font-family: monospace; margin-left: 8px;
+        }
+        input, textarea, button {
+            width: 100%; padding: 8px 12px; margin-bottom: 8px;
+            background: #2d2d2d; border: 1px solid #444; border-radius: 4px;
+            color: #fff; font-size: 0.9rem;
+        }
+        button {
+            background: #6200ee; cursor: pointer; font-weight: 600;
+            border: none; padding: 10px; transition: background 0.2s;
+        }
+        button:hover { background: #7c1fbf; }
+        .result {
+            background: #0d0d0d; border: 1px solid #333; border-radius: 4px;
+            padding: 12px; font-family: monospace; font-size: 0.8rem;
+            color: #03dac6; max-height: 200px; overflow-y: auto;
+            white-space: pre-wrap; word-break: break-all;
+        }
+        .live-notification {
+            background: #1e3a1e; border: 1px solid #2d5a2d; border-radius: 4px;
+            padding: 8px 12px; margin-bottom: 6px; font-size: 0.85rem;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; } }
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+        .status-connected { background: #00e676; }
+        .status-disconnected { background: #ff1744; }
+        #notifications { max-height: 300px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+
+<h1>🚀 NebulaShop <span class="badge">Full-Stack Demo</span></h1>
+<p class="subtitle">
+    Demonstrates: PostgreSQL · Redis · Elasticsearch · Kafka · WebSocket · Nginx · Prometheus · Grafana · MinIO
+</p>
+
+<div class="grid">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+        <!-- Create User -->
+        <div class="card">
+            <h2>Create User <span class="badge">PostgreSQL</span></h2>
+            <input type="text" id="username" placeholder="Username" value="dave">
+            <input type="text" id="email" placeholder="Email" value="dave@test.com">
+            <button onclick="createUser()">Create User</button>
+            <div class="result" id="createUserResult">{}</div>
+        </div>
+
+        <!-- Get User (Cached) -->
+        <div class="card">
+            <h2>Get User (Cache Test) <span class="badge">Redis</span></h2>
+            <input type="number" id="getUserId" placeholder="User ID" value="1">
+            <button onclick="getUser()">Get User (try twice — 2nd is cached)</button>
+            <div class="result" id="getUserResult">{}</div>
+        </div>
+
+        <!-- Create Post -->
+        <div class="card">
+            <h2>Create Post <span class="badge">PostgreSQL + Kafka</span></h2>
+            <input type="number" id="postUserId" placeholder="User ID" value="1">
+            <input type="text" id="postTitle" placeholder="Title" value="Learning System Design">
+            <textarea id="postContent" placeholder="Content" rows="2">Kafka, Redis, and PostgreSQL are the holy trinity of backend engineering.</textarea>
+            <button onclick="createPost()">Create Post → Triggers Kafka Event</button>
+            <div class="result" id="createPostResult">{}</div>
+        </div>
+
+        <!-- Search -->
+        <div class="card">
+            <h2>Search Posts <span class="badge">Elasticsearch</span></h2>
+            <input type="text" id="searchQuery" placeholder="Search query" value="kafka">
+            <button onclick="searchPosts()">Search</button>
+            <div class="result" id="searchResult">{}</div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+        <!-- Real-Time Feed (WebSocket) -->
+        <div class="card">
+            <h2>
+                Real-Time Feed
+                <span class="badge">WebSocket + Redis Pub/Sub</span>
+                <span class="status-dot status-disconnected" id="wsStatus"></span>
+            </h2>
+            <p style="font-size:0.8rem;color:#888;margin-bottom:8px;">
+                When anyone creates a post, it appears here instantly (no refresh needed).
+            </p>
+            <div id="notifications">
+                <p style="color:#666;font-size:0.85rem;">Waiting for real-time updates...</p>
+            </div>
+        </div>
+
+        <!-- Place Order -->
+        <div class="card">
+            <h2>Place Order <span class="badge">PostgreSQL + Kafka + Pub/Sub</span></h2>
+            <input type="number" id="orderUserId" placeholder="User ID" value="1">
+            <input type="text" id="orderProduct" placeholder="Product" value="Mechanical Keyboard">
+            <input type="number" id="orderQty" placeholder="Quantity" value="1">
+            <input type="number" id="orderPrice" placeholder="Price" value="2999">
+            <button onclick="createOrder()">Place Order → Triggers Event Chain</button>
+            <div class="result" id="createOrderResult">{}</div>
+        </div>
+
+        <!-- Rate Limit Test -->
+        <div class="card">
+            <h2>Rate Limit Test <span class="badge">Redis</span></h2>
+            <p style="font-size:0.8rem;color:#888;margin-bottom:8px;">
+                Click rapidly — after 10 requests/minute, you'll get 429.
+            </p>
+            <button onclick="testRateLimit()">Send Request (spam me!)</button>
+            <div class="result" id="rateLimitResult">{}</div>
+        </div>
+
+        <!-- System Stats -->
+        <div class="card">
+            <h2>System Stats <span class="badge">Redis + ES</span></h2>
+            <button onclick="getStats()">Refresh Stats</button>
+            <div class="result" id="statsResult">{}</div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const API = '/api';
+
+// ─── API CALLS ───────────────────────────────────────────────
+
+async function createUser() {
+    const res = await fetch(`${API}/users`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+        })
+    });
+    document.getElementById('createUserResult').textContent = JSON.stringify(await res.json(), null, 2);
+}
+
+async function getUser() {
+    const id = document.getElementById('getUserId').value;
+    const start = performance.now();
+    const res = await fetch(`${API}/users/${id}`);
+    const data = await res.json();
+    const elapsed = (performance.now() - start).toFixed(1);
+    document.getElementById('getUserResult').textContent =
+        `${JSON.stringify(data, null, 2)}\n\n⏱ ${elapsed}ms ${elapsed < 5 ? '(CACHE HIT ⚡)' : '(DB query)'}`;
+}
+
+async function createPost() {
+    const res = await fetch(`${API}/posts`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            user_id: parseInt(document.getElementById('postUserId').value),
+            title: document.getElementById('postTitle').value,
+            content: document.getElementById('postContent').value,
+        })
+    });
+    document.getElementById('createPostResult').textContent = JSON.stringify(await res.json(), null, 2);
+}
+
+async function searchPosts() {
+    const q = document.getElementById('searchQuery').value;
+    const res = await fetch(`${API}/search?q=${encodeURIComponent(q)}`);
+    document.getElementById('searchResult').textContent = JSON.stringify(await res.json(), null, 2);
+}
+
+async function createOrder() {
+    const res = await fetch(`${API}/orders`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            user_id: parseInt(document.getElementById('orderUserId').value),
+            product: document.getElementById('orderProduct').value,
+            quantity: parseInt(document.getElementById('orderQty').value),
+            price: parseFloat(document.getElementById('orderPrice').value),
+        })
+    });
+    document.getElementById('createOrderResult').textContent = JSON.stringify(await res.json(), null, 2);
+}
+
+async function testRateLimit() {
+    const res = await fetch(`${API}/rate-limited`);
+    const data = await res.json();
+    document.getElementById('rateLimitResult').textContent =
+        `${res.status} ${res.statusText}\n${JSON.stringify(data, null, 2)}`;
+}
+
+async function getStats() {
+    const res = await fetch(`${API}/stats`);
+    document.getElementById('statsResult').textContent = JSON.stringify(await res.json(), null, 2);
+}
+
+// ─── WEBSOCKET ───────────────────────────────────────────────
+
+const wsStatus = document.getElementById('wsStatus');
+const notificationsDiv = document.getElementById('notifications');
+
+function connectWebSocket() {
+    const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const ws = new WebSocket(`${protocol}//${location.host}/ws`);
+
+    ws.onopen = () => {
+        wsStatus.className = 'status-dot status-connected';
+        ws.send(JSON.stringify({type: 'auth', user_id: 1}));
+    };
+
+    ws.onmessage = (event) => {
+        const msg = JSON.parse(event.data);
+        const notif = document.createElement('div');
+        notif.className = 'live-notification';
+
+        if (msg.type === 'new_post') {
+            notif.innerHTML = `📝 <b>New Post:</b> ${msg.post.title}`;
+        } else if (msg.type === 'order_update') {
+            notif.innerHTML = `🛒 <b>Order Update:</b> ${msg.message}`;
+        } else if (msg.type === 'connected') {
+            notif.innerHTML = `✅ ${msg.message}`;
+        } else if (msg.type === 'heartbeat') {
+            return; // Don't show heartbeats
+        } else {
+            notif.textContent = `📨 ${JSON.stringify(msg)}`;
+        }
+
+        // Remove "waiting" message
+        const waiting = notificationsDiv.querySelector('p');
+        if (waiting) waiting.remove();
+
+        notificationsDiv.prepend(notif);
+    };
+
+    ws.onclose = () => {
+        wsStatus.className = 'status-dot status-disconnected';
+        setTimeout(connectWebSocket, 3000); // Auto-reconnect
+    };
+
+    ws.onerror = () => { ws.close(); };
+}
+
+connectWebSocket();
+
+// Load stats on page load
+getStats();
+</script>
+
+</body>
+</html>

@@ -79,6 +79,21 @@ Each deep dive covers **10 sections**: Scale Numbers → Architecture → Compon
 
 ---
 
+### 💻 Sample Project (Runnable)
+
+**NebulaShop** — a mini social-commerce platform that ties together every component from the atlas in one Docker Compose stack. PostgreSQL, Redis, Elasticsearch, Kafka, WebSocket, MinIO, Nginx, Prometheus, and Grafana — all working together.
+
+➡️ **[Sample Project →](sample-project/README.md)**
+
+```bash
+cd sample-project
+docker-compose up -d
+./scripts/init.sh
+open http://localhost:8080
+```
+
+---
+
 ### 🎯 Interview Cheat Sheet
 
 **30+ components, each with a 7-8 line definition packed with specific technical details that convince the interviewer you know it cold.** Internal mechanisms, numbers, trade-offs — exactly what you'd say when asked "Tell me about X."
