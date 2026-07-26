@@ -428,8 +428,8 @@ Facebook's original backend was PHP — fast to write, huge talent pool. But PHP
 - **Step 3:** Shard Postgres by `user_id`.
 - **Step 4:** Move photos to a CDN.
 - **Step 5:** Build TAO-like graph cache in front of Postgres.
-- **Step 5:** Introduce ML ranking model.
-- **Step 6:** Multiple datacenters with geo-DNS.
+- **Step 6:** Introduce ML ranking model.
+- **Step 7:** Multiple datacenters with geo-DNS.
 
 ### 8.5 Estimated effort
 
