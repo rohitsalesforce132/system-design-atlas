@@ -21,6 +21,7 @@ These building blocks apply to every system. Understanding them makes the app-sp
 | 4 | [Message Queues](concepts/message-queues.md) | Async processing — Kafka, RabbitMQ, pub/sub, exactly-once, decoupling services |
 | 5 | [CDN](concepts/cdn.md) | Global content delivery — edge caching, video streaming, adaptive bitrate, origin shields |
 | 6 | [Microservices](concepts/microservices.md) | When/how to split a monolith — API gateways, service discovery, circuit breakers, sagas |
+| 7 | [Consistency Models](concepts/consistency-models.md) | ACID vs BASE, CAP/PACELC theorems, strong vs eventual, tunable consistency, causal, session |
 
 ---
 

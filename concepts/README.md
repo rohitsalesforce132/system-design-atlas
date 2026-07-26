@@ -10,6 +10,7 @@ This section covers foundational concepts that apply to EVERY system in this rep
 | Message Queues | [message-queues.md](message-queues.md) | Async processing, Kafka, decoupling |
 | CDN | [cdn.md](cdn.md) | Content delivery at global scale |
 | Microservices | [microservices.md](microservices.md) | When and how to split a monolith |
+| Consistency Models | [consistency-models.md](consistency-models.md) | ACID vs BASE, CAP/PACELC, strong vs eventual, tunable consistency |
 
 ## The 10 Most Common Patterns
 
