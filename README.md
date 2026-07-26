@@ -2,7 +2,7 @@
 
 ## How the World's Biggest Apps Really Work — End to End
 
-> **22 apps. 22 architectures. 5 component guides. Zero buzzwords.**
+> **22 apps. 22 architectures. 12 component deep dives. 1 interview cheat sheet. Zero buzzwords.**
 > Every component, every scale number, every trade-off — explained from scratch, with ASCII diagrams and "how you can build it too" sections.
 
 ---
@@ -59,6 +59,16 @@ Each deep dive covers **10 sections**: Scale Numbers → Architecture → Compon
 | 12 | [Spotify](apps/spotify.md) | Music Streaming | Audio delivery + personalized recommendations |
 | 13 | [Airbnb](apps/airbnb.md) | Marketplace | Search + booking + host management |
 | 14 | [Google Search](apps/google-search.md) | Search Engine | Indexing the entire internet |
+
+---
+
+### 🎯 Interview Cheat Sheet
+
+**30+ components, each with a 7-8 line definition packed with specific technical details that convince the interviewer you know it cold.** Internal mechanisms, numbers, trade-offs — exactly what you'd say when asked "Tell me about X."
+
+➡️ **[Interview Cheat Sheet →](interview-cheatsheet.md)**
+
+Covers: Redis, MySQL, PostgreSQL, Cassandra, DynamoDB, MongoDB, Elasticsearch, S3, Bigtable, Spanner, ClickHouse, Neo4j, Kafka, RabbitMQ, SQS, Redis Streams, WebSocket, SSE, gRPC, WebRTC, MQTT, HTTP/2, Nginx, HAProxy, Envoy, Kubernetes, Docker, CDN, Spark, Flink, Airflow, Prometheus, Grafana, Jaeger, Erlang, Go.
 
 ---
 
