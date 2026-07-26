@@ -24,6 +24,10 @@ Standalone guides that go much further than the overviews above — byte-level p
 |-------|-------|---------------|
 | [WebSocket Deep Dive](websocket-deep-dive.md) | ~6,200 | Wire protocol & frame structure, handshake bytes, heartbeats & NAT timeouts, scaling to millions of connections, backpressure, pub/sub message bus, how WhatsApp/Slack/Discord/Zomato use it |
 | [Kafka Deep Dive](kafka-deep-dive.md) | ~7,000 | Log segments & index files, partitioning strategies, replication & ISR, leader election, delivery semantics (exactly-once), consumer groups & rebalancing, Kafka Streams/ksqlDB, LinkedIn/Netflix/Uber/Flipkart case studies |
+| [Redis Deep Dive](redis-deep-dive.md) | ~5,800 | Single-threaded event loop, all data structures & internal encodings (ziplist/skiplist/quicklist), RDB vs AOF persistence, replication, Redis Cluster hash slots, Sentinel HA, Streams, 6 production patterns with code |
+| [Elasticsearch Deep Dive](elasticsearch-deep-dive.md) | ~5,800 | Inverted index internals, posting list compression, text analysis pipeline (tokenizers/filters), BM25 scoring math, segment lifecycle (refresh/flush/merge), query-then-fetch, text vs keyword, aggregations |
+| [Cassandra Deep Dive](cassandra-deep-dive.md) | ~4,800 | Peer-to-peer gossip protocol, LSM-tree write path, SSTable read path (bloom filter → partition summary → data), compaction strategies (STCS/LCS/TWCS), tombstones, quorum consistency math proof, repair mechanisms |
+| [Kubernetes Deep Dive](kubernetes-deep-dive.md) | ~5,800 | Control plane & worker node internals, Pod lifecycle & sidecar pattern, all controllers (Deployment/StatefulSet/DaemonSet), service networking (kube-proxy iptables), storage (PV/PVC/StorageClass), auto-scaling (HPA), scheduling, Helm & Operators |
 
 ---
 
