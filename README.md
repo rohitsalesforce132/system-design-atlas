@@ -62,6 +62,23 @@ Each deep dive covers **10 sections**: Scale Numbers → Architecture → Compon
 
 ---
 
+### 🏗️ Sample Architectures
+
+**8 practical design blueprints** — how to architect common system types from scratch, with component selection rationale, schema design, API design, step-by-step request flows, and trade-off analysis.
+
+| # | Architecture | Key Challenge |
+|---|-------------|---------------|
+| 1 | [E-Commerce Platform](architectures/ecommerce-platform.md) | Flash sale traffic, inventory consistency |
+| 2 | [Real-Time Chat](architectures/realtime-chat.md) | WebSocket scaling, message delivery |
+| 3 | [Video Streaming](architectures/video-streaming.md) | Upload → transcode → stream pipeline |
+| 4 | [Notification System](architectures/notification-system.md) | Multi-channel fanout, delivery tracking |
+| 5 | [URL Shortener](architectures/url-shortener.md) | 100:1 read:write ratio, short code generation |
+| 6 | [Rate Limiter](architectures/rate-limiter.md) | Distributed coordination, 4 algorithms |
+| 7 | [Event-Driven Microservices](architectures/event-driven-microservices.md) | Saga pattern, CQRS, event sourcing |
+| 8 | [Multi-Tenant SaaS](architectures/multi-tenant-saas.md) | Tenant isolation, billing, data residency |
+
+---
+
 ### 🎯 Interview Cheat Sheet
 
 **30+ components, each with a 7-8 line definition packed with specific technical details that convince the interviewer you know it cold.** Internal mechanisms, numbers, trade-offs — exactly what you'd say when asked "Tell me about X."
