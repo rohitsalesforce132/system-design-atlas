@@ -31,6 +31,7 @@ Standalone guides that go much further than the overviews above — byte-level p
 | [Relational DB Deep Dive](relational-db-deep-dive.md) | ~6,400 | MySQL InnoDB clustered index vs PostgreSQL heap, B+ tree internals, MVCC (undo logs vs xmin/xmax), WAL/checkpoint, query planner/optimizer, Facebook/Flipkart sharding strategies, Vitess (YouTube), connection pooling, EXPLAIN |
 | [gRPC Deep Dive](grpc-deep-dive.md) | ~5,000 | Protobuf varint binary encoding (field numbers not names), 4 streaming modes, HTTP/2 multiplexing, HPACK compression, deadline propagation, interceptors, client-side load balancing |
 | [DynamoDB Deep Dive](dynamodb-deep-dive.md) | ~8,400 | Partition key hashing & auto-splitting, RCU/WCU capacity math, LSI vs GSI, transactions, DynamoDB Streams → Lambda, Global Tables multi-region, DAX acceleration, point-in-time recovery |
+| [S3 Deep Dive](s3-deep-dive.md) | ~4,000 | Internal architecture (index service + storage nodes across 3 AZs), 11-nines durability math, all storage classes with cost comparison, consistency model (strong since Dec 2020), versioning + delete markers, lifecycle policies, multipart upload, presigned URLs, S3 event notifications → Lambda |
 
 ---
 
