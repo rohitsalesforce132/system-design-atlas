@@ -28,6 +28,9 @@ Standalone guides that go much further than the overviews above — byte-level p
 | [Elasticsearch Deep Dive](elasticsearch-deep-dive.md) | ~5,800 | Inverted index internals, posting list compression, text analysis pipeline (tokenizers/filters), BM25 scoring math, segment lifecycle (refresh/flush/merge), query-then-fetch, text vs keyword, aggregations |
 | [Cassandra Deep Dive](cassandra-deep-dive.md) | ~4,800 | Peer-to-peer gossip protocol, LSM-tree write path, SSTable read path (bloom filter → partition summary → data), compaction strategies (STCS/LCS/TWCS), tombstones, quorum consistency math proof, repair mechanisms |
 | [Kubernetes Deep Dive](kubernetes-deep-dive.md) | ~5,800 | Control plane & worker node internals, Pod lifecycle & sidecar pattern, all controllers (Deployment/StatefulSet/DaemonSet), service networking (kube-proxy iptables), storage (PV/PVC/StorageClass), auto-scaling (HPA), scheduling, Helm & Operators |
+| [Relational DB Deep Dive](relational-db-deep-dive.md) | ~6,400 | MySQL InnoDB clustered index vs PostgreSQL heap, B+ tree internals, MVCC (undo logs vs xmin/xmax), WAL/checkpoint, query planner/optimizer, Facebook/Flipkart sharding strategies, Vitess (YouTube), connection pooling, EXPLAIN |
+| [gRPC Deep Dive](grpc-deep-dive.md) | ~5,000 | Protobuf varint binary encoding (field numbers not names), 4 streaming modes, HTTP/2 multiplexing, HPACK compression, deadline propagation, interceptors, client-side load balancing |
+| [DynamoDB Deep Dive](dynamodb-deep-dive.md) | ~8,400 | Partition key hashing & auto-splitting, RCU/WCU capacity math, LSI vs GSI, transactions, DynamoDB Streams → Lambda, Global Tables multi-region, DAX acceleration, point-in-time recovery |
 
 ---
 
