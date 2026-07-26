@@ -2,7 +2,7 @@
 
 ## How the World's Biggest Apps Really Work — End to End
 
-> **14 apps. 14 architectures. Zero buzzwords.**
+> **22 apps. 22 architectures. Zero buzzwords.**
 > Every component, every scale number, every trade-off — explained from scratch, with ASCII diagrams and "how you can build it too" sections.
 
 ---
@@ -47,15 +47,32 @@ Each deep dive covers **10 sections**: Scale Numbers → Architecture → Compon
 
 ---
 
+### 🇮🇳 Indian Tech Giants
+
+Built for India-scale: billions of UPI transactions, Diwali sale flash traffic, IPL-level spikes, and hyperlocal delivery across 1000+ cities.
+
+| # | App | Category | Key Challenge |
+|---|-----|----------|--------------|
+| 15 | [Flipkart](apps/flipkart.md) | E-Commerce | Big Billion Days flash sale at scale |
+| 16 | [Zomato](apps/zomato.md) | Food Delivery | Hyperlocal restaurant discovery + delivery |
+| 17 | [Swiggy](apps/swiggy.md) | Food Delivery | Instamart quick commerce + fleet tracking |
+| 18 | [BigBasket](apps/bigbasket.md) | Grocery | Scheduled grocery delivery + supply chain |
+| 19 | [Paytm](apps/paytm.md) | Fintech | Wallet + UPI + merchant payments |
+| 20 | [PhonePe](apps/phonepe.md) | Fintech | UPI at billion-transaction scale |
+| 21 | [Ola](apps/ola.md) | Ride-Sharing | Ride-hailing + Ola Play streaming |
+| 22 | [Razorpay](apps/razorpay.md) | Fintech | Payment gateway + routing + settlement |
+
+---
+
 ## 📖 How to Read This Repo
 
 ### If You're Learning System Design (Interview Prep)
 
 1. Start with [concepts/](concepts/) — understand the building blocks
 2. Pick apps by difficulty:
-   - **Beginner:** WhatsApp, Twitter, URL Shortener
-   - **Intermediate:** YouTube, Netflix, Uber, Amazon
-   - **Advanced:** Google Search, Google Maps, TikTok
+   - **Beginner:** WhatsApp, Twitter, Razorpay, URL Shortener
+   - **Intermediate:** YouTube, Netflix, Uber, Amazon, Flipkart, Zomato
+   - **Advanced:** Google Search, Google Maps, TikTok, PhonePe, Swiggy
 
 ### If You Want to Build Your Own Apps
 
@@ -101,6 +118,14 @@ Every app in this repo operates at Level 5 or 6. The deep dives explain how they
 | Airbnb | 150M+ | ~100K | 50+ PB | MySQL + DynamoDB |
 | Zoom | 300M+ | N/A | 100+ PB | MySQL + Cassandra |
 | Google Maps | 1B+ | ~1M | 50+ EB | Spanner + custom |
+| **Flipkart** | **50M+** | **~500K (sale: 5M)** | **50+ PB** | **MySQL (sharded) + Cassandra** |
+| **Zomato** | **20M+** | **~200K** | **10+ PB** | **PostgreSQL + Redis + Elasticsearch** |
+| **Swiggy** | **15M+** | **~300K** | **20+ PB** | **PostgreSQL + Redis + DynamoDB** |
+| **BigBasket** | **10M+** | **~50K** | **5+ PB** | **MySQL + MongoDB** |
+| **Paytm** | **50M+** | **~500K** | **20+ PB** | **MySQL + Cassandra + Kafka** |
+| **PhonePe** | **100M+** | **~10K TPS (UPI)** | **30+ PB** | **MySQL + Vitess + Kafka** |
+| **Ola** | **20M+** | **~150K** | **15+ PB** | **PostgreSQL + Redis + EMQTT** |
+| **Razorpay** | **10M+** | **~5K TPS** | **5+ PB** | **PostgreSQL + Redis + Kafka** |
 
 ---
 
