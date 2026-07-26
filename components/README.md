@@ -16,6 +16,17 @@
 
 ---
 
+### 🎯 Deep Dives — Extended Technology Guides
+
+Standalone guides that go much further than the overviews above — byte-level protocol internals, scaling to millions of connections, production operations, and code.
+
+| Guide | Words | What You Learn |
+|-------|-------|---------------|
+| [WebSocket Deep Dive](websocket-deep-dive.md) | ~6,200 | Wire protocol & frame structure, handshake bytes, heartbeats & NAT timeouts, scaling to millions of connections, backpressure, pub/sub message bus, how WhatsApp/Slack/Discord/Zomato use it |
+| [Kafka Deep Dive](kafka-deep-dive.md) | ~7,000 | Log segments & index files, partitioning strategies, replication & ISR, leader election, delivery semantics (exactly-once), consumer groups & rebalancing, Kafka Streams/ksqlDB, LinkedIn/Netflix/Uber/Flipkart case studies |
+
+---
+
 ## Quick Reference: Which Database?
 
 ```
